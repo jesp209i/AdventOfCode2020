@@ -21,6 +21,34 @@ namespace AdventOfCode
             }
             return result;
         }
+        public List<string> ToGroupStringList()
+        {
+            var result = new List<string>();
+            string[] lines = System.IO.File.ReadAllLines(@_path);
+            string group = "";
+            foreach (string line in lines)
+            {
+                
+                if (string.IsNullOrWhiteSpace(line))
+                {
+                    result.Add(group);
+                    group = "";
+                }
+                else
+                {
+                    if (group.Length == 0)
+                    {
+                        group = line;
+                    }
+                    else
+                    {
+                        group = group + " " + line;
+                    }
+                }
+            }
+            result.Add(group);
+            return result;
+        }
         public List<int> ToIntList()
         {
             var result = new List<int>();
