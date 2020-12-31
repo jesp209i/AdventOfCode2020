@@ -33,9 +33,22 @@ namespace AdventOfTests
             var list = new List<string>();
             list.Add(answers);
             var day6 = new AoCDay6(list);
-            day6.Solve();
+            day6.PartOne();
             day6.AnswerCount.Should().Be(expected);
-
+        }
+        [Theory]
+        [InlineData("abc", 3)]
+        [InlineData("a b c", 0)]
+        [InlineData("ab ac", 1)]
+        [InlineData("a a a a", 1)]
+        [InlineData("b", 1)]
+        public void YesAnswersPart2(string answers, int expected)
+        {
+            var list = new List<string>();
+            list.Add(answers);
+            var day6 = new AoCDay6(list);
+            day6.PartTwo();
+            day6.AnswerCount.Should().Be(expected);
         }
     }
 }
